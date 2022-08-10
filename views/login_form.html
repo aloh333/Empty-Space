@@ -1,0 +1,28 @@
+{% include 'social_login_panel.html' %}
+<!-- flash messages -->
+{% if flashSuccess != '' %}
+<div class="alert-wrapper">
+    <div class="alert alert-success alert-fixed" role="alert">
+        {{ flashSuccess }}
+    </div>
+</div>
+{% endif %}
+{% if flashError != '' %}
+<div class="alert-wrapper">
+    <div class="alert alert-danger alert-fixed" role="alert">
+        {{ flashError }}
+    </div>
+</div>
+{% endif %}
+<br>
+<form id="login-form" action="/auth/login" method="post">
+    <div class="form-group">
+        <label>이메일</label>
+        <input type="text" class="form-control" name="email">
+    </div>
+    <div class="form-group">
+        <label>비밀번호</label>
+        <input type="password" class="form-control" name="password">
+    </div>
+    <button type="submit" class="btn btn-warning btn-lg">로그인</button>
+</form>

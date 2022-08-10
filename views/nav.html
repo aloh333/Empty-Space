@@ -1,0 +1,17 @@
+<!-- Navigation-->
+<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="/">Empty Space</a></li>
+        <li class="sidebar-nav-item"><a href="/">Home</a></li>
+        {% if user %}
+            <li class="sidebar-nav-item"><a href="/ebook/create">상품 업로드</a></li>
+            <li class="sidebar-nav-item"><a href="#">계정관리</a></li>
+            <li class="sidebar-nav-item"><a href="/auth/logout">로그아웃</a></li>
+        {% else %}
+            <li class="sidebar-nav-item"><a href="/auth/login">로그인</a></li>
+            <li class="sidebar-nav-item"><a href="/auth/join">회원가입</a></li>
+        {% endif %}
+        <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+    </ul>
+</nav>

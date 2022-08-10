@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, height = device-height, initial-scale = 1">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <link href="/css/login.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1><span class="fa fa-sign-in">&nbsp;</span>로그인</h1>
+                <br>
+                {% include 'login_form.html' %}
+                <br>
+                <a href="/auth/resend_verify_email">
+                    <button type="submit" class="btn btn-info btn-lg">인증 이메일 재발송</button>
+                </a>
+                <hr>
+                <p>계정이 없으세요? <a href="/auth/join">회원가입하기</a></p>
+                <p><a href="/">홈으로</a>.</p>
+            </div>
+        </div>
+        <script></script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, height = device-height, initial-scale = 1">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <link href="/css/join.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1><span class="fa fa-sign-in">&nbsp;</span>회원가입</h1>
+                <br>
+                {% include 'social_login_panel.html' %}
+                <!-- flash messages -->
+                {% if flashError != '' %}
+                <div class="alert-wrapper">
+                    <div class="alert alert-danger alert-fixed" role="alert">
+                        {{ flashError }}
+                    </div>
+                </div>
+                {% endif %}
+                <form id="join-form" action="/auth/join" method="post">
+                    <div class="form-group">
+                        <label for="join-email">이메일</label>
+                        <input id="join-email" type="email" class="form-control" name="email" 
+                        value="{% if inputData %}{{ inputData.email }}{% endif %}">
+                        {% if error %}
+                        <label class="control-label" for="join-email">
+                            {{ error.email.msg }}
+                        </label>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="join-nick">이름</label>
+                        <input id="join-nick" type="text" class="form-control" name="nick" 
+                        value="{% if inputData %}{{ inputData.nick }}{% endif %}">
+                        {% if error %}
+                        <label class="control-label" for="join-nick">
+                            {{ error.nick.msg }}
+                        </label>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="join-password">비밀번호</label>
+                        <input id="join-password" type="password" class="form-control" name="password" 
+                        value="{% if inputData %}{{ inputData.password }}{% endif %}">
+                        {% if error %}
+                        <label class="control-label" for="join-password">
+                            {{ error.password.msg }}
+                        </label>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label for="join-password-confirmation">비밀번호 확인</label>
+                        <input id="join-password-confirmation" type="password" class="form-control" name="passwordConfirmation" 
+                        value="{% if inputData %}{{ inputData.passwordConfirmation }}{% endif %}">
+                        {% if error %}
+                        <label class="control-label" for="join-password-confirmation">
+                            {{ error.passwordConfirmation.msg }}
+                        </label>
+                        {% endif %}
+                    </div>
+                    <button id="join-btn" type="submit" class="btn btn-warning btn-lg">회원가입</button>
+                </form>
+                <hr>
+                <p>계정이 있으신가요? <a href="/auth/login">로그인하기</a></p>
+                <p><a href="/">홈으로</a>.</p>
+            </div>
+        </div>
+        <script></script>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Checkout</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+    <!-- Custom styles for this template -->
+    <link href="/css/form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+          <h2>상품정보 수정</h2>
+          <form action="/delete/<%= result.productId %>" method="post">
+            <button type="submit">삭제하기</button>
+          </form>
+          <a href="/logout">건너뛰기(로그아웃)</a>
+        </div>
+        <div class="col">
+          <h4 class="mb-3">상품 정보</h4>
+          <form class="needs-validation" novalidate action="/update/<%= result.name %>" method="post" enctype="multipart/form-data">
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="name" class="form-label">상품 이름</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= result.name %>" required>
+                <div class="invalid-feedback">
+                  Please enter your product name.
+                </div>
+              </div>
+              <hr class="my-4">
+              <div class="my-3">
+                <div class="form-upload">
+                  <label class="form-check-label" for="credit">상품 사진</label><br>
+                  <input id="image" name="image" type="file" class="form-control border">
+                  <%= result.image %>
+                </div>
+              </div>
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label for="cc-name" class="form-label">상품 가격</label>
+                  <input type="text" class="form-control" name="price" id="price" value="<%= result.price %>" required>
+                  <small class="text-muted">Price for your product</small>
+                  <div class="invalid-feedback">
+                    Price is required
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="cc-number" class="form-label">할인된 가격</label>
+                  <input type="text" class="form-control" name="discountPrice" id="discountPrice" value="<%= result.discountPrice %>">
+                  <small class="text-muted">세일중인 상품의 가격</small>
+                </div>
+              </div>
+              <hr class="my-4">
+              <div class="col-12" id="description">
+                <label for="name" class="form-label">상품 상세정보</label>
+                <input type="text" id="description" name="description" class="form-control" style="height: 200px;" value="<%= result.description %>" required>
+                <div class="invalid-feedback">
+                  Please enter your product name.
+                </div>
+              </div>
+              <button class="w-100 btn btn-primary btn-lg" type="submit">Upload</button>
+            </form>
+          </div>
+        </main>
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <p class="mb-1">&copy; 2017–2021 Company Name</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+          </ul>
+        </footer>
+      </div>
+      <script src="/js/form-validation.js"></script>
+  </body>
+</html>

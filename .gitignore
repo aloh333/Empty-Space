@@ -1,0 +1,6 @@
+error.log
+combined.log
+config.json
+config.js
+.env
+node_modules

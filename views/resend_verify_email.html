@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, height = device-height, initial-scale = 1">
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <link href="/css/resend_verify_email.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1><span class="fa fa-sign-in">&nbsp;</span>인증 이메일 보내기</h1>
+                <br>
+                <!-- flash messages -->
+                {% if flashError != '' %}
+                <div class="alert-wrapper">
+                    <div class="alert alert-danger alert-fixed" role="alert">
+                        {{ flashError }}
+                    </div>
+                </div>
+                {% endif %}
+                <br>
+                <form id="resend-email-form" action="/auth/resend_verify_email" method="post">
+                    <div class="form-group">
+                        <label for="resend-email">이메일</label>
+                        <input id="resend-email" type="email" class="form-control" name="email" 
+                        value="{% if inputData %}{{ inputData.email }}{% endif %}">
+                        {% if error %}
+                        <label class="control-label" for="resend-email">
+                            {{ error.email.msg }}
+                        </label>
+                        {% endif %}
+                    </div>
+                    <button id="resend-email-btn" type="submit" class="btn btn-warning btn-lg">인증 이메일 보내기</button>
+                </form>
+                <hr>
+                <p>계정이 있으신가요? <a href="/auth/login">로그인하기</a></p>
+                <p><a href="/">홈으로</a>.</p>
+            </div>
+        </div>
+        <script></script>
+    </body>
+</html>

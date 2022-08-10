@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>Shop Item</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles2.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="/">Empty Space</a></li>
+                <li class="sidebar-nav-item"><a href="/">Home</a></li>
+                <li class="sidebar-nav-item"><a href="/auth/facebook">Facebook Login</a></li>
+                <li class="sidebar-nav-item"><a href="/login">Login</a></li>
+                <li class="sidebar-nav-item"><a href="/signup">Signup</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6">
+                        <img class="card-img-top mb-5 mb-md-0" src="/images/<%= result.image %>" width="600" height="700" alt="사진없음" />
+                    </div>
+                    <div class="col-md-6">
+                        <% if(result.owner == true) { %>
+                        <% if(result.owner.ownerId == user.userId) { %>
+                            <p><a href="/update/<%= result.productId %>">수정하기</a></p>
+                        <% } %>
+                        <% } %>
+                        <a href="/purchase">뒤로가기</a>
+                        <h1 class="display-5 fw-bolder"><%= result.name %></h1>
+                        <% if(result.starScore != ' ') { %>
+                        <div class="d-flex text-warning mb-2">
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                            <div class="bi-star-fill"></div>
+                        </div>
+                        <% } %>
+                        <% if(result.discountPrice != ' ') { %>
+                        <div class="fs-5 mb-5">
+                            <span class="text-decoration-line-through"><%= result.price %></span>
+                            <p>5% 쿠폰            <strong><%= result.discountPrice %></strong></p>
+                        </div>
+                        <% } else { %>
+                        <div class="fs-5 mb-5">
+                            <strong><%= result.price %></strong>
+                        </div>
+                        <% } %>
+                        <p class="lead">
+                            <%= result.description %>
+                        </p>
+                        <form action="/product/<%= result.productId %>" method="post">
+                            <div class="d-flex">
+                                <input class="form-control text-center me-3" id="inputQuantity" type="text" name="products" value="<%= result.name %>" style="max-width: 20rem" />
+                                <input class="form-control text-center me-3" id="inputQuantity" type="text" name="price" value="<%= result.price %>" style="max-width: 20rem" />
+                                <input class="form-control text-center me-3" id="inputQuantity" type="num" name="items" value="1" style="max-width: 3rem" />
+                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    구매하기
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; by Kim Jihong 2021</p></div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/js/scripts.js"></script>
+    </body>
+</html>
