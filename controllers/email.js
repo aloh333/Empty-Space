@@ -49,10 +49,16 @@ const sendEmail = async (email, subject, url, html) => {
 };
 
 const flashMessage = (req, res, type) => {
-    if (messages.type == type) {
+    if (type == 'success') {
         return res.render('login_email_resend', {
             title: '로그인 - Empty Space',
-            flash_success: req.flash(type),
+            flashSuccess: req.flash(type),
+        });
+    }
+    if (type == 'error') {
+        return res.render('login_email_resend', {
+            title: '로그인 - Empty Space',
+            flashError: req.flash(type),
         });
     }
 }
@@ -78,26 +84,10 @@ const emailmixin = async (req, res, user) => {
     });
 
     let messages = await sendEmail(email, subject, url, emailTemplate);
-    // let messages = await sendEmail(email, subject, url, null);
 
     req.flash(messages.type, messages.message);
 
-    /*
-    if (messages.type == 'success') {
-        return res.render('login_email_resend', {
-            title: '로그인 - Empty Space',
-            flash_success: req.flash('success'),
-        });
-    }
-    if (messages.type == 'error') {
-        return res.render('login_email_resend', {
-            title: '로그인 - Empty Space',
-            flash_error: req.flash('error'),
-        });
-    }
-    */
-   flashMessage(req, res, 'success');
-   flashMessage(req, res, 'error');
+   flashMessage(req, res, messages.type);
 };
 
 module.exports = emailmixin;

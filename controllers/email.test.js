@@ -27,7 +27,7 @@ describe('emailmixin', () => {
         '회원가입을 축하드립니다. 해당 이메일 주소로 인증메일을 발송했으니 확인 후 인증하세요.');
         expect(res.render).toBeCalledWith('login_email_resend', {
             title: '로그인 - Empty Space',
-            flash_success: req.flash('success'),
+            flashSuccess: req.flash('success'),
         });
     });
 
@@ -39,7 +39,7 @@ describe('emailmixin', () => {
         '인증 이메일 발송에 실패했습니다.');
         expect(res.render).toBeCalledWith('login_email_resend', {
             title: '로그인 - Empty Space',
-            flash_error: req.flash('error'),
+            flashError: req.flash('error'),
         });
     });
 });

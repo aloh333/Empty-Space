@@ -37,7 +37,7 @@ productController.show = (req, res) => {
 
 // 상품 업로드하기
 productController.create = (req, res) => {
-    res.render('create.ejs');
+    res.render('create');
 };
 
 // 상품 저장하기
