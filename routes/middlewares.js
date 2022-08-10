@@ -57,7 +57,7 @@ exports.verifyToken =  async (req, res, next) => {
 
         if (decoded.nick == user.nick 
             && decoded.createdAt == createdAt) {
-                user.is_active = true;
+                user.isActive = true;
                 await user.save();
 
                 req.flash('success', '인증이 완료됐습니다.');
