@@ -1,2 +1,2 @@
 # Empty Space
-Node JS를 활용한 웹사이트
+Node JS 기반의 전자책 판매 쇼핑몰
