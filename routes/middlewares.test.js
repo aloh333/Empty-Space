@@ -95,7 +95,7 @@ describe('verifyToken', () => {
 
     test('jwt에 들어있는 nick과 createdAt이 user와 일치하는 경우가 아니면' 
     + 'error flash와 함께 login_email_resend 페이지로 이동해야함.', 
-    async () => { // user는 잘 찾았지만 jwt는 잘못된 값일때.
+    async () => {
         const nick = 'nick';
         const createdAt = 'createdAt';
         User.findOne.mockResolvedValue({
@@ -114,7 +114,7 @@ describe('verifyToken', () => {
             title: '로그인 - Empty Space',
             flashError: req.flash('error'),
         });
-    }, async () => { // jwt는 잘 찾았지만 user는 잘못된 값일때.
+    }, async () => {
         const nick = 'nick';
         const createdAt = 'createdAt';
         User.findOne.mockResolvedValue({
@@ -136,13 +136,13 @@ describe('verifyToken', () => {
     });
 
     test('어떤 경우든 에러가 호출되면 /?emailError=verify로 redirect함.', 
-    async () => { // user를 못찾았을때.
+    async () => {
         const error = '테스트용 에러';
         User.findOne.mockReturnValue(Promise.reject(error));
         await verifyToken(req, res, next);
         expect(res.redirect)
         .toBeCalledWith('/?emailError=verify');
-    }, async () => { // token이 이상할때.
+    }, async () => {
         const nick = 'nick';
         const createdAt = 'createdAt';
         const error = '테스트용 에러';

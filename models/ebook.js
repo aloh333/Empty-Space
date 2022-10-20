@@ -29,7 +29,7 @@ module.exports = class Ebook extends Sequelize.Model {
                 defaultValue: 0,
             },
             description: {
-                type: Sequelize.TEXT('tiny'), // TINYTEXT Type: String Maximum: 255 characters
+                type: Sequelize.TEXT('tiny'),
                 allowNull: true,
             },
         }, {

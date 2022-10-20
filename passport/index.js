@@ -14,11 +14,11 @@ module.exports = () => {
             where: { id },
             include: [{
                 model: User,
-                attributes: ['id', 'nick'], // 실수로 비밀번호를 조회하는 것을 방지하기 위해
+                attributes: ['id', 'nick'],
                 as: 'Followers',
             }, {
                 model: User,
-                attributes: ['id', 'nick'], // 이하 동문
+                attributes: ['id', 'nick'],
                 as: 'Followings',
             }],
         }).then(user => done(null, user)).catch(err => done(err));

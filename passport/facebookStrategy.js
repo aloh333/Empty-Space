@@ -34,44 +34,4 @@ module.exports = () => {
             done(error);
         }
     }));
-};
-
-
-/*
-new FacebookStrategy({
-        clientID: config.facebook.clientID,
-        clientSecret: config.facebook.clientSecret,
-        callbackURL: config.facebook.callbackURL,
-        profileFields: ['id', 'emails', 'displayName'],
-       // passReqToCallback: true,
-       session: true
-    },
-    function(accessToken, refreshToken, profile, done) {
-        const options = {
-            'facebook.id': profile.id  // facebook 에서 받아온 id 정보로 회원을 찾는다.
-        };
-
-        const database = app.get('database');
-        database.UserModel.findOne(options, (err, user) => {
-            if (err) return done(err);
-
-            if(!user) {
-                var user = new database.UserModel({
-                    name: profile.displayName,
-                    email: profile.emails[0].value,
-                    provider: 'facebook',
-                    authToken: accessToken,
-                    refreshToken: refreshToken,
-                    facebook: profile._json
-                });
-
-                user.save(function (err) {
-                    if (err) {console.log(err);}
-                    return done(err, user);
-                });
-            } else {
-                return done(err, user);
-            }
-        });
-    });
-    */ 
+}; 

@@ -1,4 +1,3 @@
-// 회원 구매 & 상품 업로드
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -17,37 +16,6 @@ const upload = multer({
         fileSize: 1024 * 1024 * 1024
     }
 });
-
-/*
-const multer = require('multer');
-
-const upload = multer({
-    storage: multer.diskStorage({
-        destination(req, file, done) {
-            done(null, 'uploads/);
-        },
-        filename(req, file, done) {
-            const ext = path.extname(file.originalname);
-            done(null, path.basename(file.originalname, ext) + Date.now() + ext);
-        },
-    }),
-    limits: { fileSize: 5 * 1024 * 1024 },
-});
-
-const fs = require('fs');
-
-try {
-    fs.readdirSync('uploads');
-} catch(error) {
-    console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
-    fs.mkdirSync('uploads');
-}
-
-app.post('/upload', upload.array('many'), (req, res) => {
-    console.log(req.files, req.body);
-    res.send('ok');
-});
-*/
 
 const product = require('../controllers/ProductController');
 

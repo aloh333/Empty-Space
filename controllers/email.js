@@ -24,7 +24,7 @@ const sendEmail = async (email, subject, url, html) => {
             from: process.env.USER,
             to: email,
             subject: subject,
-            text: `다음 주소로 이동해서 인증하세요. ${url}`,  // ${url} 이 부분 때문에 ` 로 했음.
+            text: `다음 주소로 이동해서 인증하세요. ${url}`,  
             html: html,
             attachments: [{
                 filename: 'pikapika.gif',

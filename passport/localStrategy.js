@@ -22,7 +22,6 @@ module.exports = () => {
             }
         } catch (error) {
             console.error(error);
-            // done(error);
         }
     }));
 };

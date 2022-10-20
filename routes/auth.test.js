@@ -19,8 +19,6 @@ describe('POST /join', () => {
             password: 'password',
         })
         .expect(200, done);
-        // '입력값을 다시 확인하세요.' 
-        // res.render('join')
     });
 
     test('로그인 안했으면 가입하고 인증 이메일 전송', (done) => {
@@ -33,8 +31,6 @@ describe('POST /join', () => {
             passwordConfirmation: 'password1234',
         })
         .expect(200, done);
-        // '회원가입을 축하드립니다. 해당 이메일 주소로 인증메일을 발송했으니 확인 후 인증하세요.'
-        // res.render('login_email_resend')
     });
 
     test('로그인 안했을때 이미 가입된 이메일 입력함.', (done) => {
@@ -47,8 +43,6 @@ describe('POST /join', () => {
             passwordConfirmation: 'password1234',
         })
         .expect(200, done);
-        // '이미 존재하는 이메일입니다.'
-        // res.render('join')
     });
 });
 
@@ -61,7 +55,7 @@ describe('POST /join', () => {
             email: 'aloha@naver.com',
             password: 'password1234',
         })
-        .end(done); // db ebook_test에서 is_active=true로 바꿔줌.
+        .end(done);
     });
 
     test('이미 로그인했으면 redirect /', (done) => {
@@ -79,8 +73,6 @@ describe('POST /resend_verify_email', () => {
         .post('/auth/resend_verify_email')
         .send('aloha')
         .expect(200, done);
-        // '입력값을 다시 확인하세요.'
-        // res.render('resend_verify_email')
     });
 
     test('로그인 안했을때 가입되지 않은 이메일 입력함.', (done) => {
@@ -88,8 +80,6 @@ describe('POST /resend_verify_email', () => {
         .post('/auth/resend_verify_email')
         .send('aloha@gmail.com')
         .expect(200, done);
-        // '알 수 없는 사용자입니다.'
-        // res.render('resend_verify_email')
     });
 
     test('로그인 안했을때 이메일 인증이 완료된 이메일 입력함.', (done) => {
@@ -97,8 +87,6 @@ describe('POST /resend_verify_email', () => {
         .post('/auth/resend_verify_email')
         .send('aloha@naver.com')
         .expect(200, done);
-        // '이미 인증됐습니다.'
-        // res.render('login')
     });
 
     test('로그인 안했을때 가입됐지만 인증은 안된 이메일 입력함.', (done) => {
@@ -106,8 +94,6 @@ describe('POST /resend_verify_email', () => {
         .post('/auth/resend_verify_email')
         .send('aloha333@naver.com')
         .expect(200, done);
-        // '회원가입을 축하드립니다. 해당 이메일 주소로 인증메일을 발송했으니 확인 후 인증하세요.'
-        // res.render('login_email_resend')
     });
 });
 
@@ -162,8 +148,6 @@ describe('POST /login', () => {
             password: 'password',
         })
         .expect(200, done);
-        // '가입되지 않은 회원입니다.'
-        // res.render('login')
     });
 
     test('이메일 인증이 필요한 회원', (done) => {
@@ -174,8 +158,6 @@ describe('POST /login', () => {
             password: 'password1234',
         })
         .expect(200, done);
-        // '이메일 인증이 필요합니다.'
-        // res.render('login')
     });
 
     test('비밀번호 틀림', (done) => {
@@ -186,8 +168,6 @@ describe('POST /login', () => {
             password: 'wrong',
         })
         .expect(200, done);
-        // '비밀번호가 일치하지 않습니다.'
-        // res.render('login')
     });
 
     test('로그인 수행', (done) => {

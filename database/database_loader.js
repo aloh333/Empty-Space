@@ -8,7 +8,7 @@ const connect = (app, config) => {
         useNewUrlParser: true, 
         useFindAndModify: false, 
         useUnifiedTopology: true, 
-        useCreateIndex: true  // 몽구스 버전 6.0 이상 부터는 필요없다.
+        useCreateIndex: true
     }, (error) => {
         if (error) {
             console.log('몽고디비 연결 에러', error);
@@ -61,32 +61,3 @@ const createSchema = (app, config) => {
 }
 
 module.exports = database;
-
-/*
-const mongoose = require('mongoose');
-
-const connect = () => {
-    if (process.env.NODE_ENV !== 'production') {
-        mongoose.set('debug', true);
-    }
-    mongoose.connect(config.db_url, {
-        dbName: 'shop',
-    }, (error) => {
-        if (error) {
-            console.log('몽고디비 연결 에러', error);
-        } else {
-            console.log('몽고디비 연결 성공');
-        }
-    });
-};
-
-mongoose.connection.on('error', (error) => {
-    console.error('몽고디비 연결 에러', error);
-});
-mongoose.connection.on('disconnected', () => {
-    console.error('몽고디비 연결이 끊겼습니다. 연결을 재시도합니다.');
-    connect();
-});
-
-module.exports = connect;
-*/
