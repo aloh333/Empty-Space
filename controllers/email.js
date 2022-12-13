@@ -12,8 +12,8 @@ const sendEmail = async (email, subject, url, html) => {
         const transporter = nodemailer.createTransport({
             host: process.env.HOST,
             service: process.env.SERVICE,
-            port: 587, // 465
-            secure: false, // true
+            port: 587,
+            secure: false,
             auth: {
                 user: process.env.USER,
                 pass: process.env.PASS,
@@ -24,7 +24,7 @@ const sendEmail = async (email, subject, url, html) => {
             from: process.env.USER,
             to: email,
             subject: subject,
-            text: `다음 주소로 이동해서 인증하세요. ${url}`,  
+            text: `다음 주소로 이동해서 인증하세요. ${url}`,
             html: html,
             attachments: [{
                 filename: 'pikapika.gif',
