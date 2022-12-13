@@ -1,6 +1,5 @@
 const productController = {};
 
-// 상품 목록
 productController.list = (req, res) => {
     const database = req.app.get('database');
     database.ProductModel.find({}, (err, results) => {
@@ -16,8 +15,7 @@ productController.list = (req, res) => {
     })
 };
 
-// 단일 상품 보여주기
-productController.show = (req, res) => {
+productController.detail = (req, res) => {
     const paramProductId = req.params.productId;
 
     const database = req.app.get('database');
@@ -35,12 +33,10 @@ productController.show = (req, res) => {
     });
 };
 
-// 상품 업로드하기
 productController.create = (req, res) => {
     res.render('create');
 };
 
-// 상품 저장하기
 productController.save = (req, res) => {
     const database = req.app.get('database');
     const product = new database.ProductModel({
@@ -63,7 +59,6 @@ productController.save = (req, res) => {
     res.redirect('/purchase');
 }
 
-// 로그인한 사용자가 업로드한 상품목록
 productController.mylist = (req, res) => {
     const paramOwnerId = req.params.userId;
 
@@ -79,7 +74,6 @@ productController.mylist = (req, res) => {
     });
 };
 
-// 내 상품 정보 편집하기
 productController.edit = (req, res) => {
     const paramUpdateId = req.params.productId;
 
@@ -93,7 +87,6 @@ productController.edit = (req, res) => {
     });
 };
 
-// 내 상품 정보 업데이트
 productController.update = (req, res) => {
     const paramUpdateId = req.params.name;
     const paramDiscountPrice = req.body.discountPrice || req.query.discountPrice;
@@ -118,7 +111,6 @@ productController.update = (req, res) => {
     res.redirect('/purchase');
 };
 
-// 내 상품 정보 삭제하기
 productController.delete = (req, res) => {
     const paramDeleteId = req.params.productId;
 
@@ -134,12 +126,10 @@ productController.delete = (req, res) => {
     });
 };
 
-// 체크아웃 하기
 productController.checkout = (req, res) => {
     res.render('cart.ejs');
 };
 
-// 체크아웃 정보 저장하기
 productController.checkoutSave = (req, res) => {
     const database = req.app.get('database');
     if (database) {
